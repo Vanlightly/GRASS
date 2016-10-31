@@ -470,7 +470,7 @@
     </div>
     </br>
 
-    <iframe src="http://ec2-54-86-173-112.compute-1.amazonaws.com:7474/browser/" width="100%" height="1000"></iframe>
+    <iframe src="http://your neo4J domain here:7474/browser/" width="100%" height="1000"></iframe>
 
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
@@ -1696,14 +1696,10 @@
                     <div class="panel-body">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#allAssembliesOfApp">All assemblies</a></li>
-                            <li><a data-toggle="tab" href="#vuelingAssembliesOfApp">Vueling Assemblies</a></li>
                         </ul>
                         <div id="assembliesOfAppTabContent" class="tab-content">
                             <div id="allAssembliesOfApp" class="tab-pane fade in active">
                                 <pre>match (a)<-[r:REFERENCES*]-(b)</br>where b.name = '<span class="app-name">app name</span>'</br>with distinct b.name as applicationName, a.name as referencedAssembly</br>return referencedAssembly</br>order by referencedAssembly</pre>
-                            </div>
-                            <div id="vuelingAssembliesOfApp" class="tab-pane fade">
-                                <pre>match (a)<-[r:REFERENCES*]-(b)</br>where b.name = '<span class="app-name">app name</span>'</br>with distinct b.name as applicationName, a.name as referencedAssembly</br>where a.name =~ 'Vueling.*'</br>or a.name =~ 'SkySales.*'</br>return referencedAssembly</br>order by referencedAssembly</pre>
                             </div>
                         </div>
                     </div>
@@ -1717,14 +1713,10 @@
                     <div class="panel-body">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#allAssembliesOfSln">All assemblies</a></li>
-                            <li><a data-toggle="tab" href="#vuelingAssembliesOfSln">Vueling Assemblies</a></li>
                         </ul>
                         <div id="assembliesOfSlnTabContent" class="tab-content">
                             <div id="allAssembliesOfSln" class="tab-pane fade in active">
                                 <pre>match (a)<-[r:REFERENCES*]-(b)</br>where b.name =~ '<span class="sln-name">solution name</span>.*'</br>with distinct b.name as applicationName, a.name as referencedAssembly</br>return referencedAssembly</br>order by referencedAssembly</pre>
-                            </div>
-                            <div id="vuelingAssembliesOfSln" class="tab-pane fade">
-                                <pre>match (a)<-[r:REFERENCES*]-(b)</br>where b.name =~ '<span class="sln-name">solution name</span>.*'</br>with distinct b.name as applicationName, a.name as referencedAssembly</br>where a.name =~ 'Vueling.*'</br>or a.name =~ 'SkySales.*'</br>return referencedAssembly</br>order by referencedAssembly</pre>
                             </div>
                         </div>
                     </div>
