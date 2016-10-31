@@ -1,0 +1,1928 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Grass</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="Images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="Images/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="Images/manifest.json">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="typeahead.bundle.js"></script>
+  <script type="text/javascript" src="resources.js"></script>
+  <script type="text/javascript" src="map.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+        var substringMatcher = function(strs) {
+          return function findMatches(q, cb) {
+            var matches, substringRegex;
+
+            // an array that will be populated with substring matches
+            matches = [];
+
+            // regex used to determine if a string contains the substring `q`
+            substrRegex = new RegExp(q, 'i');
+
+            // iterate through the pool of strings and for any string that
+            // contains the substring `q`, add it to the `matches` array
+            $.each(strs, function(i, str) {
+              if (substrRegex.test(str)) {
+                matches.push(str);
+              }
+            });
+
+            cb(matches);
+          };
+        };
+
+        $('input.typeahead.application-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'applications',
+          source: substringMatcher(applications)
+        });
+
+        $('input.typeahead.database-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'databases',
+          source: substringMatcher(databases)
+        });
+
+        $('input.typeahead.ws-url-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'webServiceUrls',
+          source: substringMatcher(webServiceUrls)
+        });
+
+        $('input.typeahead.ws-name-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'webServiceNames',
+          source: substringMatcher(webServiceNames)
+        });
+
+        $('input.typeahead.ftp-url-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'ftpUrls',
+          source: substringMatcher(ftpUrls)
+        });
+
+        $('input.typeahead.ftp-name-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'ftpNames',
+          source: substringMatcher(ftpNames)
+        });
+
+        $('input.typeahead.shared-folder-name-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'sharedFolderNames',
+          source: substringMatcher(sharedFolderNames)
+        });
+
+        $('input.typeahead.shared-folder-path-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'sharedFolderPaths',
+          source: substringMatcher(sharedFolderPaths)
+        });
+
+        $('input.typeahead.dist-cache-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'distCaches',
+          source: substringMatcher(distCaches)
+        });
+
+        $('input.typeahead.queue-name-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'queueNames',
+          source: substringMatcher(queueNames)
+        });
+
+        $('input.typeahead.queue-path-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'queuePaths',
+          source: substringMatcher(queuePaths)
+        });
+
+        $('input.typeahead.task-name-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'taskNames',
+          source: substringMatcher(tasks)
+        });
+
+        $('input.typeahead.task-url-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'taskUrls',
+          source: substringMatcher(taskUrls)
+        });
+
+        $('input.typeahead.task-app-name-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'taskApplications',
+          source: substringMatcher(applications)
+        });
+
+        $('input.typeahead.sb-pub-app-name-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'sbPubApplications',
+          source: substringMatcher(sbPubApplications)
+        });
+
+        $('input.typeahead.sb-sub-app-name-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'sbSubApplications',
+          source: substringMatcher(sbSubApplications)
+        });
+
+        $('input.typeahead.sb-message-name-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'sbMessageNames',
+          source: substringMatcher(sbMessageNames)
+        });
+
+        $('input.typeahead.solution-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'solutions',
+          source: substringMatcher(solutions)
+        });
+
+        $('input.typeahead.assembly-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'assemblies',
+          source: substringMatcher(assemblies)
+        });
+
+        $('input.typeahead.hint-path-search').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'hintPaths',
+          source: substringMatcher(hintPaths)
+        });
+
+        $('input.typeahead.application-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.app-name").html(datum)
+        });
+
+        $('input.typeahead.database-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.db-name").html(datum)
+        });
+
+        $('input.typeahead.ws-url-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.url").html(datum)
+        });
+
+        $('input.typeahead.ws-name-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.ws-name").html(datum)
+        });
+
+        $('input.typeahead.ftp-url-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.ftp-url").html(datum)
+        });
+
+        $('input.typeahead.ftp-name-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.ftp-name").html(datum)
+        });
+
+        $('input.typeahead.shared-folder-name-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.sf-name").html(datum)
+        });
+
+        $('input.typeahead.shared-folder-path-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.sf-uncpath").html(datum)
+        });
+
+        $('input.typeahead.dist-cache-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.dist-cache").html(datum)
+        });
+
+        $('input.typeahead.queue-name-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.queue-name").html(datum)
+        });
+
+        $('input.typeahead.queue-path-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.queue-path").html(datum)
+        });
+
+        $('input.typeahead.task-name-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.task-name").html(datum)
+        });
+
+        $('input.typeahead.task-url-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.task-url").html(datum)
+        });
+
+        $('input.typeahead.task-app-name-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.task-app-name").html(datum)
+        });
+
+        $('input.typeahead.sb-pub-app-name-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.sb-pub-app-name").html(datum)
+        });
+
+        $('input.typeahead.sb-sub-app-name-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.sb-sub-app-name").html(datum)
+        });
+
+        $('input.typeahead.sb-message-name-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.sb-message-name").html(datum)
+        });
+
+        $('input.typeahead.solution-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.sln-name").html(datum)
+        });
+
+        $('input.typeahead.assembly-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.assembly-name").html(datum)
+        });
+
+        $('input.typeahead.hint-path-search').bind('typeahead:selected', function(obj, datum, name) {
+            $("span.hint-path").html(datum)
+        });
+
+        $('#appDbCell').click(function(){
+            if ($('#queryRowDb').is(":hidden")) {
+                closeRows(openAppDb);
+            }
+            else {
+                closeAppDb(noOpen)
+            }
+        });
+
+        $('#appWsCell').click(function(){
+            if ($('#queryRowWs').is(":hidden")) {
+                closeRows(openAppWs);
+            }
+            else {
+                closeAppWs(noOpen)
+            }
+        });
+
+        $('#appFtpCell').click(function(){
+            if ($('#queryRowFtp').is(":hidden")) {
+                closeRows(openAppFtp);
+            }
+            else {
+                closeAppFtp(noOpen)
+            }
+        });
+
+        $('#appSharedFolderCell').click(function(){
+            if ($('#queryRowSharedFolder').is(":hidden")) {
+                closeRows(openAppSharedFolder);
+            }
+            else {
+                closeAppSharedFolder(noOpen)
+            }
+        });
+
+        $('#appDistCacheCell').click(function(){
+            if ($('#queryRowDistCache').is(":hidden")) {
+                closeRows(openAppDistCache);
+            }
+            else {
+                closeAppDistCache(noOpen)
+            }
+        });
+
+        $('#appQueueCell').click(function(){
+            if ($('#queryRowQueue').is(":hidden")) {
+                closeRows(openAppQueue);
+            }
+            else {
+                closeAppQueue(noOpen)
+            }
+        });
+
+        $('#taskCell').click(function(){
+            if ($('#queryRowTask').is(":hidden")) {
+                closeRows(openTask);
+            }
+            else {
+                closeTask(noOpen)
+            }
+        });
+
+        $('#appCell').click(function(){
+            if ($('#queryRowApp').is(":hidden")) {
+                closeRows(openApp);
+            }
+            else {
+                closeApp(noOpen)
+            }
+        });
+
+        $('#sbCell').click(function(){
+            if ($('#queryRowSb').is(":hidden")) {
+                closeRows(openSb);
+            }
+            else {
+                closeSb(noOpen)
+            }
+        });
+
+        $('#advPhyCell').click(function(){
+            if ($('#queryRowAdvPhy').is(":hidden")) {
+                closeRows(openAdvPhy);
+            }
+            else {
+                closeAdvPhy(noOpen)
+            }
+        });
+
+        $('#slnAssembliesCell').click(function(){
+            if ($('#queryRowSlnAssemblies').is(":hidden")) {
+                closeRows(openSlnAssemblies);
+            }
+            else {
+                closeSlnAssemblies(noOpen)
+            }
+        });
+
+        $('#refsToAssemblyCell').click(function(){
+            if ($('#queryRowRefsToAssembly').is(":hidden")) {
+                closeRows(openRefsToAssembly);
+            }
+            else {
+                closeRefsToAssembly(noOpen)
+            }
+        });
+
+        $('#refCountsToAssemblyCell').click(function(){
+            if ($('#queryRowRefCountsToAssembly').is(":hidden")) {
+                closeRows(openRefCountsToAssembly);
+            }
+            else {
+                closeRefCountsToAssembly(noOpen)
+            }
+        });
+
+        $('#advAssCell').click(function () {
+            if ($('#queryRowAdvAss').is(":hidden")) {
+                closeRows(openAdvAss);
+            }
+            else {
+                closeAdvAss(noOpen)
+            }
+        });
+    });
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="navbar-header">
+        <img class="navbar-brand" src="Images\nav-bar-img.png" />
+        <a class="navbar-brand" href="#">GRASS - GRafo de la Arquitectura de Software y Servidores</a>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-7">
+        <p class="front-page">Copy and paste a query into the map console. For multi-line queries press <kbd>ctrl + enter</kbd> to execute the query</p>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn" data-toggle="modal" data-target="#myModal">Select a Query</button>
+      </div>
+        <div class="col-md-3">
+            <p class="front-page">Last Updated 2016-10-25 13:39</p>
+        </div>
+      </div>
+    </div>
+    </br>
+
+    <iframe src="http://ec2-54-86-173-112.compute-1.amazonaws.com:7474/browser/" width="100%" height="1000"></iframe>
+
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Select a Query Group</h4>
+          </div>
+          <div class="modal-body">
+            <div class="grid-container">
+              <div class="row">
+                <div id="appDbCell" class="col-sm-2 grid-cell" >
+                  <img src="Images\app-db-web.png"/>
+                </div>
+                <div id="appWsCell" class="col-sm-2 grid-cell">
+                  <img src="Images\app-webservice-web.png"/>
+                </div>
+                <div id="appFtpCell" class="col-sm-2 grid-cell">
+                  <img src="Images\app-ftp-web.png"/>
+                </div>
+                <div id="appSharedFolderCell" class="col-sm-2 grid-cell">
+                  <img src="Images\app-sharedfolder-web.png"/>
+                </div>
+                <div id="appDistCacheCell" class="col-sm-2 grid-cell">
+                  <img src="Images\app-distCache-web.png"/>
+                </div>
+                <div id="appQueueCell" class="col-sm-2 grid-cell">
+                  <img src="Images\app-queue-web.png"/>
+                </div>
+              </div>
+              <div id="queryRowDb" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderDb"></div>
+                    <img src="Images\app-db-web.png"/>
+                </div>
+                <div id="queryRowContainerContentDb" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowWs" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderWs"></div>
+                    <img src="Images\app-webservice-web.png"/>
+                </div>
+                <div id="queryRowContainerContentWs" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowFtp" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderFtp"></div>
+                    <img src="Images\app-ftp-web.png"/>
+                </div>
+                <div id="queryRowContainerContentFtp" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowSharedFolder" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderSharedFolder"></div>
+                    <img src="Images\app-sharedfolder-web.png"/>
+                </div>
+                <div id="queryRowContainerContentSharedFolder" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowDistCache" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderDistCache"></div>
+                    <img src="Images\app-distcache-web.png"/>
+                </div>
+                <div id="queryRowContainerContentDistCache" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowQueue" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderQueue"></div>
+                    <img src="Images\app-queue-web.png"/>
+                </div>
+                <div id="queryRowContainerContentQueue" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div class="row">
+                <div id="taskCell" class="col-sm-3 grid-cell-large">
+                  <img src="Images\task-ws-app-web.png"/>
+                </div>
+                <div id="appCell" class="col-sm-3 grid-cell-large">
+                  <img src="Images\app-all-web.png"/>
+                </div>
+                <div id="sbCell" class="col-sm-3 grid-cell-large">
+                  <img src="Images\servicebus-pub-sub.png"/>
+                </div>
+                <div id="advPhyCell" class="col-sm-3 grid-cell-large">
+                  <img src="Images\advanced-physical-web.png"/>
+                </div>
+              </div>
+              <div id="queryRowTask" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderTask"></div>
+                    <img src="Images\task-ws-app-web.png"/>
+                </div>
+                <div id="queryRowContainerContentTask" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowApp" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderApp"></div>
+                    <img src="Images\app-all-web.png"/>
+                </div>
+                <div id="queryRowContainerContentApp" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowSb" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderSb"></div>
+                    <img src="Images\servicebus-pub-sub.png"/>
+                </div>
+                <div id="queryRowContainerContentSb" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowAdvPhy" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderAdvPhy"></div>
+                    <img src="Images\advanced-physical-web.png"/>
+                </div>
+                <div id="queryRowContainerContentAdvPhy" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div class="row">
+                <div id="slnAssembliesCell" class="col-sm-3 grid-cell-large">
+                  <img src="Images\assemblies-sln-web.png"/>
+                </div>
+                <div id="refsToAssemblyCell" class="col-sm-3 grid-cell-large">
+                  <img src="Images\assemblies-references-to-one-web.png"/>
+                </div>
+                <div id="refCountsToAssemblyCell" class="col-sm-3 grid-cell-large">
+                  <img src="Images\assemblies-stats-web.png"/>
+                </div>
+                <div id="advAssCell" class="col-sm-3 grid-cell-large">
+                  <img src="Images\assemblies-advanced-web.png"/>
+                </div>
+              </div>
+              <div id="queryRowSlnAssemblies" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderSlnAssemblies"></div>
+                    <img src="Images\assemblies-sln-web.png"/>
+                </div>
+                <div id="queryRowContainerContentSlnAssemblies" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowSlnAssemblies" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderSlnAssemblies"></div>
+                    <img src="Images\assemblies-references-to-one-web.png"/>
+                </div>
+                <div id="queryRowContainerContentSlnAssemblies" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowRefsToAssembly" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderRefsToAssembly"></div>
+                    <img src="Images\assemblies-references-to-one-web.png"/>
+                </div>
+                <div id="queryRowContainerContentRefsToAssembly" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowRefCountsToAssembly" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                    <div id="queryRowContainerHeaderRefCountsToAssembly"></div>
+                    <img src="Images\assemblies-stats-web.png"/>
+                </div>
+                <div id="queryRowContainerContentRefCountsToAssembly" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+              <div id="queryRowAdvAss" class="row">
+                <div class="col-sm-4 grid-cell-query-header">
+                  <div id="queryRowContainerHeaderAdvAss"></div>
+                  <img src="Images\assemblies-advanced-web.png" />
+                </div>
+                <div id="queryRowContainerContentAdvAss" class="col-sm-8 grid-cell-query-content">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="appDbQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#whereAppPanelPlaceholderDb">Where Application</a></li>
+          <li><a data-toggle="pill" href="#whereDb">Where Database</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="whereAppPanelPlaceholderDb" class="tab-pane fade in active">
+          </div>
+          <div id="whereDb" class="tab-pane">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                  <div><input id="#databaseSearch" type="text" class="database-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a database..."></div>
+              </div>
+              <div class="panel-body">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a data-toggle="tab" href="#db_appDbEM">Exact Match</a></li>
+                  <li><a data-toggle="tab" href="#db_appDbCI">Case Insensitive</a></li>
+                  <li><a data-toggle="tab" href="#db_appDbLike">Like</a></li>
+                  <li><a data-toggle="tab" href="#db_appDbMultipleIn">Multiple - In</a></li>
+                  <li><a data-toggle="tab" href="#db_appDbMultipleOr">Multiple - Or</a></li>
+                  <li><a data-toggle="tab" href="#db_appDbNotExactMatch">Not Exact Match</a></li>
+                  <li><a data-toggle="tab" href="#db_appDbNotLike">Not Like</a></li>
+                </ul>
+                <div id="db_appDbTabContent" class="tab-content">
+                  <div id="db_appDbEM" class="tab-pane fade in active">
+                    <pre>match (a:Application)--(b:Database)</br>where b.name = '<span class="db-name">db name</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="db_appDbCI" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:Database)</br>where b.name = '(?i)<span class="db-name">db name</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="db_appDbLike" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:Database)</br>where b.name =~ '.*<span class="db-name">db name</span>.*'</br>return a, b</pre>
+                  </div>
+                  <div id="db_appDbMultipleIn" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:Database)</br>where b.name in ['<span class="db-name">db name</span>', '<span class="db-name">db name</span>', '<span class="db-name">db name</span>']</br>return a, b</pre>
+                  </div>
+                  <div id="db_appDbMultipleOr" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:Database)</br>where b.name = '<span class="db-name">db name</span>'</br>or b.name = '<span class="db-name">db name</span>'</br>or b.name = '<span class="db-name">db name</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="db_appDbNotExactMatch" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:Database)</br>where not b.name = '<span class="db-name">db name</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="db_appDbNotLike" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:Database)</br>where not b.name =~ '.*<span class="db-name">db name</span>.*'</br>return a, b</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div id="appWsQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#whereAppPanelPlaceholderWs">Where Application</a></li>
+          <li><a data-toggle="pill" href="#whereWsUrl">Where Web Service Url</a></li>
+          <li><a data-toggle="pill" href="#whereWsName">Where Web Service Name</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="whereAppPanelPlaceholderWs" class="tab-pane fade in active"></div>
+          <div id="whereWsUrl" class="tab-pane fade">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                  <div><input id="#wsUrlSearch" type="text" class="ws-url-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a url..."></div>
+              </div>
+              <div class="panel-body">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a data-toggle="tab" href="#url_appWsEM">Exact Match</a></li>
+                  <li><a data-toggle="tab" href="#url_appWsCI">Case Insensitive</a></li>
+                  <li><a data-toggle="tab" href="#url_appWsLike">Case Insensitive Like</a></li>
+                  <li><a data-toggle="tab" href="#url_appWsMultipleIn">Multiple - In</a></li>
+                  <li><a data-toggle="tab" href="#url_appWsMultipleOr">Multiple - Or</a></li>
+                  <li><a data-toggle="tab" href="#url_appWsNotExactMatch">Not Exact Match</a></li>
+                  <li><a data-toggle="tab" href="#url_appWsNotLike">Not Like</a></li>
+                </ul>
+                <div id="url_appWsTabContent" class="tab-content">
+                  <div id="url_appWsEM" class="tab-pane fade in active">
+                    <pre>match (a:Application)--(b:WebService)</br>where b.url = '<span class="url">url</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="url_appWsCI" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where b.url = '(?i)<span class="url">url</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="url_appWsLike" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where b.url =~ '(?i).*<span class="url">url</span>.*'</br>return a, b</pre>
+                  </div>
+                  <div id="url_appWsMultipleIn" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where b.url in ['<span class="url">url</span>', '<span class="url">url</span>', '<span class="url">url</span>']</br>return a, b</pre>
+                  </div>
+                  <div id="url_appWsMultipleOr" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where b.url = '<span class="url">url</span>'</br>or b.name = '<span class="url">url</span>'</br>or b.name = '<span class="url">url</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="url_appWsNotExactMatch" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where not b.url = '<span class="url">url</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="url_appWsNotLike" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where not b.url =~ '.*<span class="url">url</span>.*'</br>return a, b</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="whereWsName" class="tab-pane fade">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                  <div><input id="#wsNameSearch" type="text" class="ws-name-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a name..."></div>
+              </div>
+              <div class="panel-body">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a data-toggle="tab" href="#url_appWsEM">Exact Match</a></li>
+                  <li><a data-toggle="tab" href="#name_appWsCI">Case Insensitive</a></li>
+                  <li><a data-toggle="tab" href="#name_appWsLike">Case Insensitive Like</a></li>
+                  <li><a data-toggle="tab" href="#name_appWsMultipleIn">Multiple - In</a></li>
+                  <li><a data-toggle="tab" href="#name_appWsMultipleOr">Multiple - Or</a></li>
+                  <li><a data-toggle="tab" href="#name_appWsNotExactMatch">Not Exact Match</a></li>
+                  <li><a data-toggle="tab" href="#name_appWsNotLike">Not Like</a></li>
+                </ul>
+                <div id="name_appWsTabContent" class="tab-content">
+                  <div id="name_appWsEM" class="tab-pane fade in active">
+                    <pre>match (a:Application)--(b:WebService)</br>where b.name = '<span class="ws-name">name</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="name_appWsCI" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where b.name = '(?i)<span class="ws-name">name</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="name_appWsLike" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where b.name =~ '(?i).*<span class="ws-name">name</span>.*'</br>return a, b</pre>
+                  </div>
+                  <div id="name_appWsMultipleIn" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where b.name in ['<span class="ws-name">name</span>', '<span class="ws-name">ws name</span>', '<span class="ws-name">ws name</span>']</br>return a, b</pre>
+                  </div>
+                  <div id="name_appWsMultipleOr" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where b.name = '<span class="ws-name">name</span>'</br>or b.name = '<span class="ws-name">ws name</span>'</br>or b.name = '<span class="ws-name">ws name</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="name_appWsNotExactMatch" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where not b.name = '<span class="ws-name">name</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="name_appWsNotLike" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:WebService)</br>where not b.name =~ '.*<span class="ws-name">name</span>.*'</br>return a, b</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div id="appFtpQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#whereAppPanelPlaceholderFtp">Where Application</a></li>
+          <li><a data-toggle="pill" href="#whereFtpUrl">Where Ftp Url</a></li>
+          <li><a data-toggle="pill" href="#whereFtpName">Where Ftp Name</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="whereAppPanelPlaceholderFtp" class="tab-pane fade in active">
+            </div>
+            <div id="whereFtpUrl" class="tab-pane fade">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <div><input id="#ftpUrlSearch" type="text" class="ftp-url-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a url..."></div>
+                  </div>
+                  <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#url_appFtpEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#url_appFtpCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#url_appFtpLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#url_appFtpMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#url_appFtpMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#url_appFtpNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#url_appFtpNotLike">Not Like</a></li>
+                    </ul>
+                    <div id="url_appFtpTabContent" class="tab-content">
+                      <div id="url_appFtpEM" class="tab-pane fade in active">
+                        <pre>match (a:Application)--(b:Ftp)</br>where b.url = '<span class="ftp-url">url</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="url_appFtpCI" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where b.url = '(?i)<span class="ftp-url">url</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="url_appFtpLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where b.url =~ '(?i).*<span class="ftp-url">url</span>.*'</br>return a, b</pre>
+                      </div>
+                      <div id="url_appFtpMultipleIn" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where b.url in ['<span class="ftp-url">url</span>', '<span class="ftp-url">url</span>', '<span class="ftp-url">url</span>']</br>return a, b</pre>
+                      </div>
+                      <div id="url_appFtpMultipleOr" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where b.url = '<span class="ftp-url">url</span>'</br>or b.name = '<span class="ftp-url">url</span>'</br>or b.name = '<span class="ftp-url">url</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="url_appFtpNotExactMatch" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where not b.url = '<span class="ftp-url">url</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="url_appFtpNotLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where not b.url =~ '.*<span class="ftp-url">url</span>.*'</br>return a, b</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div id="whereFtpName" class="tab-pane fade">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <div><input id="#ftpNameSearch" type="text" class="ftp-name-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a name..."></div>
+                  </div>
+                  <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#url_appFtpEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#name_appFtpCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#name_appFtpLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#name_appFtpMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#name_appFtpMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#name_appFtpNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#name_appFtpNotLike">Not Like</a></li>
+                    </ul>
+                    <div id="name_appFtpTabContent" class="tab-content">
+                      <div id="name_appFtpEM" class="tab-pane fade in active">
+                        <pre>match (a:Application)--(b:Ftp)</br>where b.name = '<span class="ftp-name">name</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appFtpCI" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where b.name = '(?i)<span class="ftp-name">name</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appFtpLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where b.name =~ '(?i).*<span class="ftp-name">name</span>.*'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appFtpMultipleIn" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where b.name in ['<span class="ftp-name">name</span>', '<span class="ftp-name">ftp name</span>', '<span class="ftp-name">ftp name</span>']</br>return a, b</pre>
+                      </div>
+                      <div id="name_appFtpMultipleOr" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where b.name = '<span class="ftp-name">name</span>'</br>or b.name = '<span class="ftp-name">ftp name</span>'</br>or b.name = '<span class="ftp-name">ftp name</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appFtpNotExactMatch" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where not b.name = '<span class="ftp-name">name</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appFtpNotLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Ftp)</br>where not b.name =~ '.*<span class="ftp-name">name</span>.*'</br>return a, b</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="appSharedFolderQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#whereAppPanelPlaceholderSharedFolder">Where Application</a></li>
+          <li><a data-toggle="pill" href="#whereSharedFolderPath">Where Shared Folder Path</a></li>
+          <li><a data-toggle="pill" href="#whereSharedFolderName">Where Shared Folder Name</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="whereAppPanelPlaceholderSharedFolder" class="tab-pane fade in active">
+            </div>
+            <div id="whereSharedFolderPath" class="tab-pane fade">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <div><input id="#sharedFolderPathSearch" type="text" class="shared-folder-path-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a unc path..."></div>
+                  </div>
+                  <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#path_appSharedFolderEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#path_appSharedFolderCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#path_appSharedFolderLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#path_appSharedFolderMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#path_appSharedFolderMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#path_appSharedFolderNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#path_appSharedFolderNotLike">Not Like</a></li>
+                    </ul>
+                    <div id="path_appSharedFolderTabContent" class="tab-content">
+                      <div id="path_appSharedFolderEM" class="tab-pane fade in active">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where b.uncpath = '<span class="sf-uncpath">unc path</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="path_appSharedFolderCI" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where b.uncpath = '(?i)<span class="sf-uncpath">unc path</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="path_appSharedFolderLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where b.uncpath =~ '(?i).*<span class="sf-uncpath">unc path</span>.*'</br>return a, b</pre>
+                      </div>
+                      <div id="path_appSharedFolderMultipleIn" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where b.uncpath in ['<span class="sf-uncpath">unc path 1</span>', '<span class="sf-uncpath">unc path 2</span>', '<span class="sf-uncpath">un path3</span>']</br>return a, b</pre>
+                      </div>
+                      <div id="path_appSharedFolderMultipleOr" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where b.uncpath = '<span class="sf-uncpath">unc path 1</span>'</br>or b.uncpath = '<span class="sf-uncpath">unc path 2</span>'</br>or b.uncpath = '<span class="sf-uncpath">unc path 3</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="path_appSharedFolderNotExactMatch" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where not b.uncpath = '<span class="sf-uncpath">unc path</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="path_appSharedFolderNotLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where not b.uncpath =~ '.*<span class="sf-uncpath">unc path</span>.*'</br>return a, b</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div id="whereSharedFolderName" class="tab-pane fade">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <div><input id="#sharedFolderNameSearch" type="text" class="shared-folder-name-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a name..."></div>
+                  </div>
+                  <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#path_appSharedFolderEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#name_appSharedFolderCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#name_appSharedFolderLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#name_appSharedFolderMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#name_appSharedFolderMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#name_appSharedFolderNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#name_appSharedFolderNotLike">Not Like</a></li>
+                    </ul>
+                    <div id="name_appSharedFolderTabContent" class="tab-content">
+                      <div id="name_appSharedFolderEM" class="tab-pane fade in active">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where b.name = '<span class="sf-name">name</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appSharedFolderCI" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where b.name = '(?i)<span class="sf-name">name</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appSharedFolderLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where b.name =~ '(?i).*<span class="sf-name">name</span>.*'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appSharedFolderMultipleIn" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where b.name in ['<span class="sf-name">name1</span>', '<span class="sf-name">name2</span>', '<span class="sf-name">name</span>']</br>return a, b</pre>
+                      </div>
+                      <div id="name_appSharedFolderMultipleOr" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where b.name = '<span class="sf-name">name1</span>'</br>or b.name = '<span class="sf-name">name2</span>'</br>or b.name = '<span class="sf-name">name3</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appSharedFolderNotExactMatch" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where not b.name = '<span class="sf-name">uncpath</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appSharedFolderNotLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:SharedFolder)</br>where not b.name =~ '.*<span class="sf-name">uncpath</span>.*'</br>return a, b</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="appDistCacheQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#whereAppPanelPlaceholderDistCache">Where Application</a></li>
+          <li><a data-toggle="pill" href="#whereDistCache">Where Distributed Cache</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="whereAppPanelPlaceholderDistCache" class="tab-pane fade in active">
+          </div>
+          <div id="whereDistCache" class="tab-pane">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                  <div><input id="#distCacheSearch" type="text" class="dist-cache-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a distributed cache..."></div>
+              </div>
+              <div class="panel-body">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a data-toggle="tab" href="#appDistCacheEM">Exact Match</a></li>
+                  <li><a data-toggle="tab" href="#appDistCacheCI">Case Insensitive</a></li>
+                  <li><a data-toggle="tab" href="#appDistCacheLike">Like</a></li>
+                  <li><a data-toggle="tab" href="#appDistCacheMultipleIn">Multiple - In</a></li>
+                  <li><a data-toggle="tab" href="#appDistCacheMultipleOr">Multiple - Or</a></li>
+                  <li><a data-toggle="tab" href="#appDistCacheNotExactMatch">Not Exact Match</a></li>
+                  <li><a data-toggle="tab" href="#appDistCacheNotLike">Not Like</a></li>
+                </ul>
+                <div id="appDistCacheTabContent" class="tab-content">
+                  <div id="appDistCacheEM" class="tab-pane fade in active">
+                    <pre>match (a:Application)--(b:DistributedCache)</br>where b.name = '<span class="dist-cache">distributed cache</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="appDistCacheCI" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:DistributedCache)</br>where b.name = '(?i)<span class="dist-cache">distributed cache</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="appDistCacheLike" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:DistributedCache)</br>where b.name =~ '.*<span class="dist-cache">distributed cache</span>.*'</br>return a, b</pre>
+                  </div>
+                  <div id="appDistCacheMultipleIn" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:DistributedCache)</br>where b.name in ['<span class="dist-cache">distributed cache 1</span>', '<span class="dist-cache">distributed cache 2</span>', '<span class="dist-cache">distributed cache 3</span>']</br>return a, b</pre>
+                  </div>
+                  <div id="appDistCacheMultipleOr" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:DistributedCache)</br>where b.name = '<span class="dist-cache">distributed cache 1</span>'</br>or b.name = '<span class="dist-cache">distributed cache 2</span>'</br>or b.name = '<span class="dist-cache">distributed cache 3</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="appDistCacheNotExactMatch" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:DistributedCache)</br>where not b.name = '<span class="dist-cache">distributed cache</span>'</br>return a, b</pre>
+                  </div>
+                  <div id="appDistCacheNotLike" class="tab-pane fade">
+                    <pre>match (a:Application)--(b:DistributedCache)</br>where not b.name =~ '.*<span class="dist-cache">distributed cache</span>.*'</br>return a, b</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div id="appQueueQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#whereAppPanelPlaceholderQueue">Where Application</a></li>
+          <li><a data-toggle="pill" href="#whereQueuePath">Where Queue Path</a></li>
+          <li><a data-toggle="pill" href="#whereQueueName">Where Queue Name</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="whereAppPanelPlaceholderQueue" class="tab-pane fade in active">
+            </div>
+            <div id="whereQueuePath" class="tab-pane fade">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <div><input id="#queuePathSearch" type="text" class="queue-path-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a queue path..."></div>
+                  </div>
+                  <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#path_appQueueEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#path_appQueueCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#path_appQueueLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#path_appQueueMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#path_appQueueMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#path_appQueueNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#path_appQueueNotLike">Not Like</a></li>
+                    </ul>
+                    <div id="path_appQueueTabContent" class="tab-content">
+                      <div id="path_appQueueEM" class="tab-pane fade in active">
+                        <pre>match (a:Application)--(b:Queue)</br>where b.path = '<span class="queue-path">queue path</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="path_appQueueCI" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where b.path = '(?i)<span class="queue-path">queue path</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="path_appQueueLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where b.path =~ '(?i).*<span class="queue-path">queue path</span>.*'</br>return a, b</pre>
+                      </div>
+                      <div id="path_appQueueMultipleIn" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where b.path in ['<span class="queue-path">queue path 1</span>', '<span class="queue-path">queue path 2</span>', '<span class="queue-path">queue path 3</span>']</br>return a, b</pre>
+                      </div>
+                      <div id="path_appQueueMultipleOr" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where b.path = '<span class="queue-path">queue path 1</span>'</br>or b.path = '<span class="queue-path">queue path 2</span>'</br>or b.path = '<span class="queue-path">queue path 3</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="path_appQueueNotExactMatch" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where not b.path = '<span class="queue-path">queue path</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="path_appQueueNotLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where not b.path =~ '.*<span class="queue-path">queue path</span>.*'</br>return a, b</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div id="whereQueueName" class="tab-pane fade">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <div><input id="#queueNameSearch" type="text" class="queue-name-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a queue name..."></div>
+                  </div>
+                  <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#url_appQueueEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#name_appQueueCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#name_appQueueLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#name_appQueueMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#name_appQueueMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#name_appQueueNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#name_appQueueNotLike">Not Like</a></li>
+                    </ul>
+                    <div id="name_appQueueTabContent" class="tab-content">
+                      <div id="name_appQueueEM" class="tab-pane fade in active">
+                        <pre>match (a:Application)--(b:Queue)</br>where b.name = '<span class="queue-name">queue name</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appQueueCI" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where b.name = '(?i)<span class="queue-name">queue name</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appQueueLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where b.name =~ '(?i).*<span class="queue-name">queue name</span>.*'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appQueueMultipleIn" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where b.name in ['<span class="queue-name">queue name 1</span>', '<span class="queue-name">queue name 2</span>', '<span class="queue-name">queue name 3</span>']</br>return a, b</pre>
+                      </div>
+                      <div id="name_appQueueMultipleOr" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where b.name = '<span class="queue-name">queue name 1</span>'</br>or b.name = '<span class="queue-name">queue name 2</span>'</br>or b.name = '<span class="queue-name">queue name 3</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appQueueNotExactMatch" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where not b.name = '<span class="queue-name">queue name</span>'</br>return a, b</pre>
+                      </div>
+                      <div id="name_appQueueNotLike" class="tab-pane fade">
+                        <pre>match (a:Application)--(b:Queue)</br>where not b.name =~ '.*<span class="queue-name">queue name</span>.*'</br>return a, b</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="taskQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#whereTaskName">Where Task Name</a></li>
+          <li><a data-toggle="pill" href="#whereTaskUrl">Where Url Invoked</a></li>
+          <li><a data-toggle="pill" href="#whereTaskApp">Where Host Application</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="whereTaskName" class="tab-pane fade in active">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <div><input id="#taskNameSearch" type="text" class="task-name-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a scheduled task name..."></div>
+                  </div>
+                  <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#taskNameEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#taskNameCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#taskNameLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#taskNameMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#taskNameMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#taskNameNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#taskNameNotLike">Not Like</a></li>
+                      <li><a data-toggle="tab" href="#taskNameGrid">Grid View</a></li>
+                    </ul>
+                    <div id="taskNameTabContent" class="tab-content">
+                      <div id="taskNameEM" class="tab-pane fade in active">
+                        <p>Return tasks only</p>
+                        <pre>match (a:ScheduledTask)</br>where a.task = '<span class="task-name">task name</span>'</br>return a</pre>
+                        <p>Return tasks and web services (filters out tasks that do not call web services)</p>
+                        <pre>match (a:ScheduledTask)--&gt;(b:WebService)</br>where a.task = '<span class="task-name">task name</span>'</br>return a, b</pre>
+                        <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in any applications)</p>
+                        <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where a.task = '<span class="task-name">task name</span>'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskNameCI" class="tab-pane fade">
+                          <p>Return tasks only</p>
+                          <pre>match (a:ScheduledTask)</br>where a.task = '(?i)<span class="task-name">task name</span>'</br>return a</pre>
+                          <p>Return tasks and web services (filters out tasks that do not call web services)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)</br>where a.task = '(?i)<span class="task-name">task name</span>'</br>return a, b</pre>
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in any applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where a.task = '(?i)<span class="task-name">task name</span>'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskNameLike" class="tab-pane fade">
+                          <p>Return tasks only</p>
+                          <pre>match (a:ScheduledTask)</br>where a.task =~ '(?i).*<span class="task-name">task name</span>.*'</br>return a</pre>
+                          <p>Return tasks and web services (filters out tasks that do not call web services)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)</br>where a.task =~ '(?i).*<span class="task-name">task name</span>.*'</br>return a, b</pre>
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in any applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where a.task =~ '(?i).*<span class="task-name">task name</span>.*'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskNameMultipleIn" class="tab-pane fade">
+                          <p>Return tasks only</p>
+                          <pre>match (a:ScheduledTask)</br>where a.task in ['<span class="task-name">task name 1</span>', '<span class="task-name">task name 2</span>', '<span class="task-name">task name 3</span>']</br>return a</pre>
+                          <p>Return tasks and web services (filters out tasks that do not call web services)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)</br>where a.task in ['<span class="task-name">task name 1</span>', '<span class="task-name">task name 2</span>', '<span class="task-name">task name 3</span>']</br>return a, b</pre>
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in any applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where a.task in ['<span class="task-name">task name 1</span>', '<span class="task-name">task name 2</span>', '<span class="task-name">task name 3</span>']</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskNameMultipleOr" class="tab-pane fade">
+                          <p>Return tasks only</p>
+                          <pre>match (a:ScheduledTask)</br>where a.task = '<span class="task-name">task name</span>'</br>or a.task = '<span class="task-name">task name 2</span>'</br>or a.task = '<span class="task-name">task name 3</span>'</br>return a</pre>
+                          <p>Return tasks and web services (filters out tasks that do not call web services)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)</br>where a.task = '<span class="task-name">task name</span>'</br>or a.task = '<span class="task-name">task name 2</span>'</br>or a.task = '<span class="task-name">task name 3</span>'</br>return a, b</pre>
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in any applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where a.task = '<span class="task-name">task name</span>'</br>or a.task = '<span class="task-name">task name 2</span>'</br>or a.task = '<span class="task-name">task name 3</span>'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskNameNotExactMatch" class="tab-pane fade">
+                          <p>Return tasks only</p>
+                          <pre>match (a:ScheduledTask)</br>where not a.task = '<span class="task-name">task name</span>'</br>return a</pre>
+                          <p>Return tasks and web services (filters out tasks that do not call web services)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)</br>where not a.task = '<span class="task-name">task name</span>'</br>return a, b</pre>
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in any applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where not a.task = '<span class="task-name">task name</span>'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskNameNotLike" class="tab-pane fade">
+                          <p>Return tasks only</p>
+                          <pre>match (a:ScheduledTask)</br>where not a.task =~ '.*<span class="task-name">task name</span>.*'</br>return a</pre>
+                          <p>Return tasks and web services (filters out tasks that do not call web services)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)</br>where not a.task =~ '.*<span class="task-name">task name</span>.*'</br>return a, b</pre>
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in any applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where not a.task =~ '.*<span class="task-name">task name</span>.*'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskNameGrid" class="tab-pane fade">
+                        <pre>match (a:ScheduledTask)</br>where a.task = '<span class="task-name">task name</span>'</br>return a.task, a.activity, a.path, a.interval, a.callsurl, a.callsmethod</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div id="whereTaskUrl" class="tab-pane fade">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <div><input id="#taskUrlSearch" type="text" class="task-url-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a url invoked by a task..."></div>
+                  </div>
+                  <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#taskUrlEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#taskUrlCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#taskUrlLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#taskUrlGrid">Grid View</a></li>
+                    </ul>
+                    <div id="taskUrlTabContent" class="tab-content">
+                      <div id="taskUrlEM" class="tab-pane fade in active">
+                        <p>Return tasks only</p>
+                        <pre>match (a:ScheduledTask)</br>where a.callsurl = '<span class="task-url">url</span>'</br>return a</pre>
+                        <p>Return tasks and web services (filters out tasks that do not call web services)</p>
+                        <pre>match (a:ScheduledTask)--&gt;(b:WebService)</br>where a.callsurl = '<span class="task-url">url</span>'</br>return a, b</pre>
+                        <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in applications)</p>
+                        <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where a.callsurl = '<span class="task-url">url</span>'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskUrlCI" class="tab-pane fade">
+                          <p>Return tasks only</p>
+                          <pre>match (a:ScheduledTask)</br>where a.callsurl = '(?i)<span class="task-url">url</span>'</br>return a</pre>
+                          <p>Return tasks and web services (filters out tasks that do not call web services)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)</br>where a.callsurl = '(?i)<span class="task-url">url</span>'</br>return a, b</pre>
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where a.callsurl = '(?i)<span class="task-url">url</span>'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskUrlLike" class="tab-pane fade">
+                          <p>Return tasks only</p>
+                          <pre>match (a:ScheduledTask)</br>where a.callsurl =~ '(?i).*<span class="task-url">url</span>.*'</br>return a</pre>
+                          <p>Return tasks and web services (filters out tasks that do not call web services)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)</br>where a.callsurl =~ '(?i).*<span class="task-url">url</span>.*'</br>return a, b</pre>
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where a.callsurl =~ '(?i).*<span class="task-url">url</span>.*'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskUrlGrid" class="tab-pane fade">
+                        <pre>match (a:ScheduledTask)</br>where a.callsurl = '<span class="task-url">url</span>'</br>return a.task, a.activity, a.path, a.interval, a.callsurl, a.callsmethod</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div id="whereTaskApp" class="tab-pane fade">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <div><input id="#taskAppSearch" type="text" class="task-app-name-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for an application that hosts a web service..."></div>
+                  </div>
+                  <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#taskAppEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#taskAppCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#taskAppLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#taskAppMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#taskAppMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#taskAppNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#taskAppNotLike">Not Like</a></li>
+                      <li><a data-toggle="tab" href="#taskAppGrid">Grid View</a></li>
+                    </ul>
+                    <div id="taskNameTabContent" class="tab-content">
+                      <div id="taskAppEM" class="tab-pane fade in active">
+                        <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in applications)</p>
+                        <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where c.name = '<span class="task-app-name">app name</span>'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskAppCI" class="tab-pane fade">
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where c.name = '(?i)<span class="task-app-name">app name</span>'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskAppLike" class="tab-pane fade">
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where c.name =~ '(?i).*<span class="task-app-name">app name</span>.*'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskAppMultipleIn" class="tab-pane fade">
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where c.name in ['<span class="task-app-name">app name 1</span>', '<span class="task-app-name">app name 2</span>', '<span class="task-app-name">app name 3</span>']</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskAppMultipleOr" class="tab-pane fade">
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where c.name = '<span class="task-app-name">app name 1</span>'</br>or c.name = '<span class="task-app-name">app name 2</span>'</br>or c.name = '<span class="task-app-name">app name 3</span>'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskNameNotExactMatch" class="tab-pane fade">
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where not c.name = '<span class="task-app-name">app name</span>'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskNameNotLike" class="tab-pane fade">
+                          <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in applications)</p>
+                          <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where not c.name =~ '.*<span class="task-app-name">app name</span>.*'</br>return a, b, c</pre>
+                      </div>
+                      <div id="taskAppGrid" class="tab-pane fade">
+                        <p>Return tasks, web services and hosting applications (filters out tasks that do not call web services and web services not hosted in applications)</p>
+                        <pre>match (a:ScheduledTask)--&gt;(b:WebService)-[:HOSTED_BY]-&gt;(c:Application)</br>where c.name = '<span class="task-app-name">app name</span>'</br>return c.name, a.task, a.activity, a.path, a.interval, a.callsurl, a.callsmethod</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="appQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#whereApp">Where Application</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="whereApp" class="tab-pane fade in active">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div><input id="#applicationSearch" type="text" class="application-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for an application..."></div>
+                </div>
+                <div class="panel-body">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#appEM">Exact Match</a></li>
+                    <li><a data-toggle="tab" href="#appCI">Case Insensitive</a></li>
+                    <li><a data-toggle="tab" href="#appLike">Case Insensitive Like</a></li>
+                    <li><a data-toggle="tab" href="#appMultipleIn">Multiple - In</a></li>
+                    <li><a data-toggle="tab" href="#appMultipleOr">Multiple - Or</a></li>
+                    <li><a data-toggle="tab" href="#appNotExactMatch">Not Exact Match</a></li>
+                    <li><a data-toggle="tab" href="#appNotLike">Not Like</a></li>
+                  </ul>
+                  <div id="appTabContent" class="tab-content">
+                    <div id="appEM" class="tab-pane fade in active">
+                      <pre>match (a:Application)--(b)</br>where a.name = '<span class="app-name">app name</span>'</br>return a, b</pre>
+                    </div>
+                    <div id="appCI" class="tab-pane fade">
+                      <pre>match (a:Application)--(b)</br>where a.name = '(?i)<span class="app-name">app name</span>'</br>return a, b</pre>
+                    </div>
+                    <div id="appLike" class="tab-pane fade">
+                      <pre>match (a:Application)--(b)</br>where a.name =~ '(?i).*<span class="app-name">app name</span>.*'</br>return a, b</pre>
+                    </div>
+                    <div id="appMultipleIn" class="tab-pane fade">
+                      <pre>match (a:Application)--(b)</br>where a.name in ['<span class="app-name">app name</span>', '<span class="app-name">app name</span>', '<span class="app-name">app name</span>']</br>return a, b</pre>
+                    </div>
+                    <div id="appMultipleOr" class="tab-pane fade">
+                      <pre>match (a:Application)--(b)</br>where a.name = '<span class="app-name">app name</span>'</br>or a.name = '<span class="app-name">app name</span>'</br>or a.name = '<span class="app-name">app name</span>'</br>return a, b</pre>
+                    </div>
+                    <div id="appNotExactMatch" class="tab-pane fade">
+                      <pre>match (a:Application)--(b)</br>where not a.name = '<span class="app-name">app name</span>'</br>return a, b</pre>
+                    </div>
+                    <div id="appNotLike" class="tab-pane fade">
+                      <pre>match (a:Application)--(b)</br>where not a.name =~ '.*<span class="app-name">app name</span>.*'</br>return a, b</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div id="sbQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#whereSbMsgName">Where Message Name</a></li>
+          <li><a data-toggle="pill" href="#wherePubAppName">Where Publisher</a></li>
+          <li><a data-toggle="pill" href="#whereSubAppName">Where Subscriber</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="whereSbMsgName" class="tab-pane fade in active">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div><input id="#whereSbMsgNameSearch" type="text" class="sb-message-name-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a service bus message name..."></div>
+                </div>
+                <div class="panel-body">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#sbMsgNameEM">Exact Match</a></li>
+                    <li><a data-toggle="tab" href="#sbMsgNameCI">Case Insensitive</a></li>
+                    <li><a data-toggle="tab" href="#sbMsgNameLike">Case Insensitive Like</a></li>
+                    <li><a data-toggle="tab" href="#sbMsgNameMultipleIn">Multiple - In</a></li>
+                    <li><a data-toggle="tab" href="#sbMsgNameMultipleOr">Multiple - Or</a></li>
+                    <li><a data-toggle="tab" href="#sbMsgNameNotExactMatch">Not Exact Match</a></li>
+                    <li><a data-toggle="tab" href="#sbMsgNameNotLike">Not Like</a></li>
+                  </ul>
+                  <div id="sbMsgNameTabContent" class="tab-content">
+                    <div id="sbMsgNameEM" class="tab-pane fade in active">
+                      <pre>match (a:ServiceBusMessage)--(b:Application)</br>where a.name = '<span class="sb-message-name">message name</span>'</br>return a, b</pre>
+                    </div>
+                    <div id="sbMsgNameCI" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)--(b:Application)</br>where a.name = '(?i)<span class="sb-message-name">message name</span>'</br>return a, b</pre>
+                    </div>
+                    <div id="sbMsgNameLike" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)--(b:Application)</br>where a.name =~ '(?i).*<span class="sb-message-name">message name</span>.*'</br>return a, b</pre>
+                    </div>
+                    <div id="sbMsgNameMultipleIn" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)--(b:Application)</br>where a.name in ['<span class="sb-message-name">message name 1</span>', '<span class="sb-message-name">message name 2</span>', '<span class="sb-message-name">message name 3</span>']</br>return a, b</pre>
+                    </div>
+                    <div id="sbMsgNameMultipleOr" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)--(b:Application)</br>where a.name = '<span class="sb-message-name">message name 1</span>'</br>or a.name = '<span class="sb-message-name">message name 2</span>'</br>or a.name = '<span class="sb-message-name">message name 3</span>'</br>return a, b</pre>
+                    </div>
+                    <div id="sbMsgNameNotExactMatch" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)--(b:Application)</br>where not a.name = '<span class="sb-message-name">message name</span>'</br>return a, b</pre>
+                    </div>
+                    <div id="sbMsgNameNotLike" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)--(b:Application)</br>where not a.name =~ '.*<span class="sb-message-name">message name</span>.*'</br>return a, b</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div id="wherePubAppName" class="tab-pane fade">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div><input id="#wherePubAppSearch" type="text" class="sb-pub-app-name-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a service bus message publisher..."></div>
+                </div>
+                <div class="panel-body">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#pubAppNameEM">Exact Match</a></li>
+                    <li><a data-toggle="tab" href="#pubAppNameCI">Case Insensitive</a></li>
+                    <li><a data-toggle="tab" href="#pubAppNameLike">Case Insensitive Like</a></li>
+                    <li><a data-toggle="tab" href="#pubAppNameMultipleIn">Multiple - In</a></li>
+                    <li><a data-toggle="tab" href="#pubAppNameMultipleOr">Multiple - Or</a></li>
+                    <li><a data-toggle="tab" href="#pubAppNameNotExactMatch">Not Exact Match</a></li>
+                    <li><a data-toggle="tab" href="#pubAppNameNotLike">Not Like</a></li>
+                  </ul>
+                  <div id="pubAppNameTabContent" class="tab-content">
+                    <div id="pubAppNameEM" class="tab-pane fade in active">
+                      <pre>match (a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where b.name = '<span class="sb-pub-app-name">app name</span>'</br>optional match(c:Application)<--(a:ServiceBusMessage)</br>return a, b, c</pre>
+                    </div>
+                    <div id="pubAppNameCI" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where b.name = '(?i)<span class="sb-pub-app-name">app name</span>'</br>optional match(c:Application)<--(a:ServiceBusMessage)</br>return a, b, c</pre>
+                    </div>
+                    <div id="pubAppNameLike" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where b.name =~ '(?i).*<span class="sb-pub-app-name">app name</span>.*'</br>optional match(c:Application)<--(a:ServiceBusMessage)</br>return a, b, c</pre>
+                    </div>
+                    <div id="pubAppNameMultipleIn" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where b.name in ['<span class="sb-pub-app-name">app name 1</span>', '<span class="sb-pub-app-name">app name 2</span>', '<span class="sb-pub-app-name">app name 3</span>']</br>optional match(c:Application)<--(a:ServiceBusMessage)</br>return a, b, c</pre>
+                    </div>
+                    <div id="pubAppNameMultipleOr" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where b.name = '<span class="sb-pub-app-name">app name 1</span>'</br>or b.name = '<span class="sb-pub-app-name">app name 2</span>'</br>or b.name = '<span class="sb-pub-app-name">app name 3</span>'</br>optional match(c:Application)<--(a:ServiceBusMessage)</br>return a, b, c</pre>
+                    </div>
+                    <div id="pubAppNameNotExactMatch" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where not b.name = '<span class="sb-pub-app-name">message name</span>'</br>optional match(c:Application)<--(a:ServiceBusMessage)</br>return a, b, c</pre>
+                    </div>
+                    <div id="pubAppNameNotLike" class="tab-pane fade">
+                      <pre>match (a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where not b.name =~ '.*<span class="sb-pub-app-name">message name</span>.*'</br>optional match(c:Application)<--(a:ServiceBusMessage)</br>return a, b, c</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div id="whereSubAppName" class="tab-pane fade">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div><input id="#whereSubAppSearch" type="text" class="sb-sub-app-name-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a service bus message subscriber..."></div>
+                </div>
+                <div class="panel-body">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#subAppNameEM">Exact Match</a></li>
+                    <li><a data-toggle="tab" href="#subAppNameCI">Case Insensitive</a></li>
+                    <li><a data-toggle="tab" href="#subAppNameLike">Case Insensitive Like</a></li>
+                    <li><a data-toggle="tab" href="#subAppNameMultipleIn">Multiple - In</a></li>
+                    <li><a data-toggle="tab" href="#subAppNameMultipleOr">Multiple - Or</a></li>
+                    <li><a data-toggle="tab" href="#subAppNameNotExactMatch">Not Exact Match</a></li>
+                    <li><a data-toggle="tab" href="#subAppNameNotLike">Not Like</a></li>
+                  </ul>
+                  <div id="subAppNameTabContent" class="tab-content">
+                    <div id="subAppNameEM" class="tab-pane fade in active">
+                      <pre>match (c:Application)-[:SUBSCRIBES]->(a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where c.name = '<span class="sb-sub-app-name">app name</span>'</br>return a, b, c</pre>
+                    </div>
+                    <div id="subAppNameCI" class="tab-pane fade">
+                      <pre>match (c:Application)-[:SUBSCRIBES]->(a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where c.name = '(?i)<span class="sb-sub-app-name">app name</span>'</br>return a, b, c</pre>
+                    </div>
+                    <div id="subAppNameLike" class="tab-pane fade">
+                      <pre>match (c:Application)-[:SUBSCRIBES]->(a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where c.name =~ '(?i).*<span class="sb-sub-app-name">app name</span>.*'</br>return a, b, c</pre>
+                    </div>
+                    <div id="subAppNameMultipleIn" class="tab-pane fade">
+                      <pre>match (c:Application)-[:SUBSCRIBES]->(a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where c.name in ['<span class="sb-sub-app-name">app name 1</span>', '<span class="sb-sub-app-name">app name 2</span>', '<span class="sb-sub-app-name">app name 3</span>']</br>return a, b, c</pre>
+                    </div>
+                    <div id="subAppNameMultipleOr" class="tab-pane fade">
+                      <pre>match (c:Application)-[:SUBSCRIBES]->(a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where c.name = '<span class="sb-sub-app-name">app name 1</span>'</br>or c.name = '<span class="sb-sub-app-name">app name 2</span>'</br>or c.name = '<span class="sb-sub-app-name">app name 3</span>'</br>return a, b, c</pre>
+                    </div>
+                    <div id="subAppNameNotExactMatch" class="tab-pane fade">
+                      <pre>match (c:Application)-[:SUBSCRIBES]->(a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where not c.name = '<span class="sb-sub-app-name">app name</span>'</br>return a, b, c</pre>
+                    </div>
+                    <div id="subAppNameNotLike" class="tab-pane fade">
+                      <pre>match (c:Application)-[:SUBSCRIBES]->(a:ServiceBusMessage)<-[:PUBLISHES]-(b:Application)</br>where not c.name =~ '.*<span class="sb-sub-app-name">app name</span>.*'</br>return a, b, c</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div id="advPhyQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#whereAdvPhy">Advanced Queries</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="whereAdvPhy" class="tab-pane fade in active">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div><input id="#whereAdvPhyAppSearch" type="text" class="application-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for an application name..."></div>
+                </div>
+                <div class="panel-body">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#advPhyNotIn">Components Without a Given Relationship</a></li>
+                  </ul>
+                  <div id="advPhyTabContent" class="tab-content">
+                    <div id="advPhyNotIn" class="tab-pane fade in active">
+                      <p>With Cypher, it is not obvious how to match nodes WITHOUT a given relationship.</p>
+                      <ol>
+                          <li>Collect the names of components (of the desired type) that you do NOT want returned.</li>
+                          <li>Match ALL components of the desired type</li>
+                          <li>Filter components not in the collected list of components</li>
+                      </ol>
+                      <p>The example below shows all applications that do not access databases</p>
+                      <pre>match (a:Application)-->(b:Database)</br>with collect(a.name) as appsThatAccessDbs</br>match (n:Application)</br>with n.name as appName</br>where not appName in appsThatAccessDbs</br>return appName</br>order by appName</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div id="refsToAssemblyQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+            <li class="active"><a data-toggle="tab" href="#refToAssemblyAnyVersion">Where Assembly (any version)</a></li>
+            <li><a data-toggle="tab" href="#refToAssemblySpecificVersion">Where Assembly (specific version)</a></li>
+            <li><a data-toggle="tab" href="#refToAssemblyHintPath">Where Hint Path</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="refToAssemblyAnyVersion" class="tab-pane fade in active">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div><input id="#assemblySearch" type="text" class="assembly-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for an assembly..."></div>
+                </div>
+                <div class="panel-body">
+                  <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#refToAssAnyVersionEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#refToAssAnyVersionCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#refToAssAnyVersionLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#refToAssAnyVersionMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#refToAssAnyVersionMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#refToAssAnyVersionNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#refToAssAnyVersionNotLike">Not Like</a></li>
+                  </ul>
+                  <div id="refToAssAnyVersionTabContent" class="tab-content">
+                    <div id="refToAssAnyVersionEM" class="tab-pane fade in active">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '<span class="assembly-name">assembly name</span>'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version</pre>
+                    </div>
+                    <div id="refToAssAnyVersionCI" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '(?i)<span class="assembly-name">assembly name</span>'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version</pre>
+                    </div>
+                    <div id="refToAssAnyVersionLike" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name =~ '(?i).*<span class="assembly-name">assembly name</span>.*'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version</pre>
+                    </div>
+                    <div id="refToAssAnyVersionMultipleIn" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name in ['<span class="assembly-name">assembly name 1</span>', '<span class="assembly-name">assembly name 2</span>', '<span class="assembly-name">assembly name 3</span>']</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                    <div id="refToAssAnyVersionMultipleOr" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '<span class="assembly-name">assembly name1</span>'</br>or a.name = '<span class="assembly-name">assembly name 2</span>'</br>or a.name = '<span class="assembly-name">assembly name 3</span>'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                    <div id="refToAssAnyVersionNotExactMatch" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where not a.name = '<span class="assembly-name">assembly name</span>'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                    <div id="refToAssAnyVersionNotLike" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where not a.name =~ '.*(?i)<span class="assembly-name">assembly name</span>.*'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div id="refToAssemblySpecificVersion" class="tab-pane fade">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div><input id="#assemblySearch2" type="text" class="assembly-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for an assembly..."></div>
+                </div>
+                <div class="panel-body">
+                  <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#refToAssSpecificVersionEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#refToAssSpecificVersionCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#refToAssSpecificVersionLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#refToAssSpecificVersionMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#refToAssSpecificVersionMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#refToAssSpecificVersionNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#refToAssSpecificVersionNotLike">Not Like</a></li>
+                  </ul>
+                  <div id="refToAssSpecificVersionTabContent" class="tab-content">
+                    <div id="refToAssSpecificVersionEM" class="tab-pane fade in active">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '<span class="assembly-name">assembly name</span>'</br>and r.version = 'version number'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                    <div id="refToAssSpecificVersionCI" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '(?i)<span class="assembly-name">assembly name</span>'</br>and r.version = 'version number'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                    <div id="refToAssSpecificVersionLike" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name =~ '(?i).*<span class="assembly-name">assembly name</span>.*'</br>and r.version = 'version number'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                    <div id="refToAssSpecificVersionMultipleIn" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name in ['<span class="assembly-name">assembly name 1</span>', '<span class="assembly-name">assembly name 2</span>', '<span class="assembly-name">assembly name 3</span>']</br>and r.version = 'version number'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                    <div id="refToAssSpecificVersionMultipleOr" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '<span class="assembly-name">assembly name1</span>'</br>or a.name = '<span class="assembly-name">assembly name 2</span>'</br>or a.name = '<span class="assembly-name">assembly name 3</span>'</br>and r.version = 'version number'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                    <div id="refToAssSpecificVersionNotExactMatch" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where not a.name = '<span class="assembly-name">assembly name</span>'</br>and r.version = 'version number'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                    <div id="refToAssSpecificVersionNotLike" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where not a.name =~ '.*(?i)<span class="assembly-name">assembly name</span>.*'</br>and r.version = 'version number'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div id="refToAssemblyHintPath" class="tab-pane fade">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div><input id="#hintPathSearch" type="text" class="hint-path-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a hint path..."></div>
+                </div>
+                <div class="panel-body">
+                  <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#refToAssHintPathEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#refToAssHintPathLike">Case Insensitive Like</a></li>
+                  </ul>
+                  <div id="refToAssHintPathTabContent" class="tab-content">
+                    <div id="refToAssHintPathEM" class="tab-pane fade in active">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where r.hintpath = '<span class="hint-path">hint path</span>'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                    <div id="refToAssHintPathLike" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where r.hintpath = '(?i).*<span class="hint-path">hint path</span>.*'</br>return b.name, r.version, r.hintpath</br>order by b.name, r.version, r.hintpath</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div id="slnAssembliesQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#slnAssEM">All projects in a solution</a></li>
+            <li><a data-toggle="pill" href="#appAssemblies">Assemblies in an application</a></li>
+            <li><a data-toggle="pill" href="#slnAssemblies">Assemblies in a solution</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="slnProjects" class="tab-pane fade in active">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div><input id="#solutionSearch" type="text" class="solution-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a solution..."></div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#EM">Application name starts with solution name</a></li>
+                        </ul>
+                        <div id="slnAssembliesTabContent" class="tab-content">
+                            <div id="slnAssEM" class="tab-pane fade in active">
+                                <pre>match (a)-[r:REFERENCES]-(b)</br>where r.version = 'ProjectRef'</br> and a.name =~ '<span class="sln-name">solution name</span>.*'</br>return a, b</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="appAssemblies" class="tab-pane fade">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div><input type="text" class="application-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for an application..."></div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#allAssembliesOfApp">All assemblies</a></li>
+                            <li><a data-toggle="tab" href="#vuelingAssembliesOfApp">Vueling Assemblies</a></li>
+                        </ul>
+                        <div id="assembliesOfAppTabContent" class="tab-content">
+                            <div id="allAssembliesOfApp" class="tab-pane fade in active">
+                                <pre>match (a)<-[r:REFERENCES*]-(b)</br>where b.name = '<span class="app-name">app name</span>'</br>with distinct b.name as applicationName, a.name as referencedAssembly</br>return referencedAssembly</br>order by referencedAssembly</pre>
+                            </div>
+                            <div id="vuelingAssembliesOfApp" class="tab-pane fade">
+                                <pre>match (a)<-[r:REFERENCES*]-(b)</br>where b.name = '<span class="app-name">app name</span>'</br>with distinct b.name as applicationName, a.name as referencedAssembly</br>where a.name =~ 'Vueling.*'</br>or a.name =~ 'SkySales.*'</br>return referencedAssembly</br>order by referencedAssembly</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="slnAssemblies" class="tab-pane fade">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div><input type="text" class="solution-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for a solution..."></div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#allAssembliesOfSln">All assemblies</a></li>
+                            <li><a data-toggle="tab" href="#vuelingAssembliesOfSln">Vueling Assemblies</a></li>
+                        </ul>
+                        <div id="assembliesOfSlnTabContent" class="tab-content">
+                            <div id="allAssembliesOfSln" class="tab-pane fade in active">
+                                <pre>match (a)<-[r:REFERENCES*]-(b)</br>where b.name =~ '<span class="sln-name">solution name</span>.*'</br>with distinct b.name as applicationName, a.name as referencedAssembly</br>return referencedAssembly</br>order by referencedAssembly</pre>
+                            </div>
+                            <div id="vuelingAssembliesOfSln" class="tab-pane fade">
+                                <pre>match (a)<-[r:REFERENCES*]-(b)</br>where b.name =~ '<span class="sln-name">solution name</span>.*'</br>with distinct b.name as applicationName, a.name as referencedAssembly</br>where a.name =~ 'Vueling.*'</br>or a.name =~ 'SkySales.*'</br>return referencedAssembly</br>order by referencedAssembly</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="refCountsToAssemblyQueryContainer" class="query-container">
+        <ul class="nav nav-pills">
+            <li class="active"><a data-toggle="tab" href="#refCountToAssemblyAllVersions">Count Per Assembly</a></li>
+            <li><a data-toggle="tab" href="#refCountToAssemblyPerVersion">Count Per Assembly Version</a></li>
+            <li><a data-toggle="tab" href="#topAssemblies">Top Assemblies</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="refCountToAssemblyAllVersions" class="tab-pane fade in active">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div><input id="#assemblySearch3" type="text" class="assembly-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for an assembly..."></div>
+                </div>
+                <div class="panel-body">
+                  <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#refCountToAssAllVersionsEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssAllVersionsCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssAllVersionsLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssAllVersionsMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssAllVersionsMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssAllVersionsNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssAllVersionsNotLike">Not Like</a></li>
+                  </ul>
+                  <div id="refCountToAssAllVersionsTabContent" class="tab-content">
+                    <div id="refCountToAssAllVersionsEM" class="tab-pane fade in active">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '<span class="assembly-name">assembly name</span>'</br>return a.name, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssAllVersionsCI" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '(?i)<span class="assembly-name">assembly name</span>'</br>return a.name, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssAllVersionsLike" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name =~ '.*(?i)<span class="assembly-name">assembly name</span>.*'</br>and r.version = 'version number'</br>return a.name, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssAllVersionsMultipleIn" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name in ['<span class="assembly-name">assembly name 1</span>', '<span class="assembly-name">assembly name 2</span>', '<span class="assembly-name">assembly name 3</span>']</br>return a.name, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssAllVersionsMultipleOr" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '<span class="assembly-name">assembly name1</span>'</br>or a.name = '<span class="assembly-name">assembly name 2</span>'</br>or a.name = '<span class="assembly-name">assembly name 3</span>'</br>return a.name, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssAllVersionsNotExactMatch" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where not a.name = '<span class="assembly-name">assembly name</span>'</br>return a.name, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssAllVersionsNotLike" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where not a.name =~ '.*(?i)<span class="assembly-name">assembly name</span>.*'</br>return a.name, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div id="refCountToAssemblyPerVersion" class="tab-pane fade">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div><input id="#assemblySearch4" type="text" class="assembly-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for an assembly..."></div>
+                </div>
+                <div class="panel-body">
+                  <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#refCountToAssPerVersionEM">Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssPerVersionCI">Case Insensitive</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssPerVersionLike">Case Insensitive Like</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssPerVersionMultipleIn">Multiple - In</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssPerVersionMultipleOr">Multiple - Or</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssPerVersionNotExactMatch">Not Exact Match</a></li>
+                      <li><a data-toggle="tab" href="#refCountToAssPerVersionNotLike">Not Like</a></li>
+                  </ul>
+                  <div id="refCountToAssPerVersionTabContent" class="tab-content">
+                    <div id="refCountToAssPerVersionEM" class="tab-pane fade in active">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '<span class="assembly-name">assembly name</span>'</br>return a.name, r.version, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssPerVersionCI" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '(?i)<span class="assembly-name">assembly name</span>'</br>and r.version = 'version number'</br>return a.name, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssPerVersionLike" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name =~ '.*(?i)<span class="assembly-name">assembly name</span>.*'</br>return a.name, r.version, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssPerVersionMultipleIn" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name in ['<span class="assembly-name">assembly name 1</span>', '<span class="assembly-name">assembly name 2</span>', '<span class="assembly-name">assembly name 3</span>']</br>return a.name, r.version, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssPerVersionMultipleOr" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name = '<span class="assembly-name">assembly name1</span>'</br>or a.name = '<span class="assembly-name">assembly name 2</span>'</br>or a.name = '<span class="assembly-name">assembly name 3</span>'</br>return a.name, r.version, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssPerVersionNotExactMatch" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where not a.name = '<span class="assembly-name">assembly name</span>'</br>return a.name, r.version, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="refCountToAssPerVersionNotLike" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where not a.name =~ '.*(?i)<span class="assembly-name">assembly name</span>.*'</br>return a.name, r.version, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div id="topAssemblies" class="tab-pane fade">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#topAssembliesAll">Most Popular - All</a></li>
+                      <li><a data-toggle="tab" href="#topAssembliesMicrosoft">Most Popular - Microsoft</a></li>
+                  </ul>
+                  <div id="topAssembliesTabContent" class="tab-content">
+                    <div id="topAssembliesAll" class="tab-pane fade in active">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>return a.name, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                    <div id="topAssembliesMicrosoft" class="tab-pane fade">
+                      <pre>match (a)<-[r:REFERENCES]-(b)</br>where a.name =~ 'Microsoft.*'</br>or a.name =~ 'System.*'</br>return a.name, count(b)</br>order by count(b) desc, a.name</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+
+      <div id="advAssQueryContainer" class="query-container">
+          <ul class="nav nav-pills">
+              <li class="active"><a data-toggle="pill" href="#advAssCircularDep">Circular References</a></li>
+          </ul>
+          <div class="tab-content">
+              <div id="advAssCircularDep" class="tab-pane fade in active">
+                  <div class="panel panel-default">
+                      <div class="panel-body">
+                          <ul class="nav nav-tabs">
+                              <li class="active"><a data-toggle="tab" href="#advAssCirDepSln">Solution A -&gt; B -&gt; A</a></li>
+                              <li><a data-toggle="tab" href="#advAssCirDepAss">Assembly A -&gt; B/C/D -&gt; A</a></li>
+                          </ul>
+                          <div id="advAssCirDepTabContent" class="tab-content">
+                              <div id="advAssCirDepSln" class="tab-pane fade in active">
+                                  <p>When one application references nuget packages of another, that references itself as nuget packages is poor design</p>
+                                  <pre>match(a)-[:REFERENCES]->(b)-[:REFERENCES]->(c)
+where a.app_domain <> b.app_domain
+and a.app_domain = c.app_domain
+return a.name, b.name, c.name
+order by a.name, b.name, c.name</pre>
+                              </div>
+                              <div id="advAssCirDepAss" class="tab-pane fade">
+                                  <p>A direct or multi-hop circular dependency is poor design.</p>
+                                  <p>In the interests of query execution time, the below query limits the hops to 5</p>
+                                  <pre>match(aStart)-[:REFERENCES*1..5]->(aFinish)
+where aStart.name = aFinish.name
+return aStart, aFinish</pre>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    <div id="whereAppPanel" class="query-panel-container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <div><input id="#applicationSearch" type="text" class="application-search typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for an application..."></div>
+        </div>
+        <div class="panel-body">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#appDbEM">Exact Match</a></li>
+            <li><a data-toggle="tab" href="#appDbCI">Case Insensitive</a></li>
+            <li><a data-toggle="tab" href="#appDbLike">Like</a></li>
+            <li><a data-toggle="tab" href="#appDbMultipleIn">Multiple - In</a></li>
+            <li><a data-toggle="tab" href="#appDbMultipleOr">Multiple - Or</a></li>
+            <li><a data-toggle="tab" href="#appDbNotExactMatch">Not Exact Match</a></li>
+            <li><a data-toggle="tab" href="#appDbNotLike">Not Like</a></li>
+          </ul>
+          <div id="appDbTabContent" class="tab-content">
+            <div id="appDbEM" class="tab-pane fade in active">
+              <pre>match (a:Application)--(b:<span class="app-label">Database</span>)</br>where a.name = '<span class="app-name">app name</span>'</br>return a, b</pre>
+            </div>
+            <div id="appDbCI" class="tab-pane fade">
+              <pre>match (a:Application)--(b:<span class="app-label">Database</span>)</br>where a.name = '(?i)<span class="app-name">app name</span>'</br>return a, b</pre>
+            </div>
+            <div id="appDbLike" class="tab-pane fade">
+              <pre>match (a:Application)--(b:<span class="app-label">Database</span>)</br>where a.name =~ '.*<span class="app-name">app name</span>.*'</br>return a, b</pre>
+            </div>
+            <div id="appDbMultipleIn" class="tab-pane fade">
+              <pre>match (a:Application)--(b:<span class="app-label">Database</span>)</br>where a.name in ['<span class="app-name">app name</span>', '<span class="app-name">app name</span>', '<span class="app-name">app name</span>']</br>return a, b</pre>
+            </div>
+            <div id="appDbMultipleOr" class="tab-pane fade">
+              <pre>match (a:Application)--(b:<span class="app-label">Database</span>)</br>where a.name = '<span class="app-name">app name</span>'</br>or a.name = '<span class="app-name">app name</span>'</br>or a.name = '<span class="app-name">app name</span>'</br>return a, b</pre>
+            </div>
+            <div id="appDbNotExactMatch" class="tab-pane fade">
+              <pre>match (a:Application)--(b:<span class="app-label">Database</span>)</br>where not a.name = '<span class="app-name">app name</span>'</br>return a, b</pre>
+            </div>
+            <div id="appDbNotLike" class="tab-pane fade">
+              <pre>match (a:Application)--(b:<span class="app-label">Database</span>)</br>where not a.name =~ '.*<span class="app-name">app name</span>.*'</br>return a, b</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</body>
+</html>

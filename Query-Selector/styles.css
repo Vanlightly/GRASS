@@ -1,0 +1,202 @@
+body {
+    background: #7d7e7d; /* Old browsers */
+    background: -moz-linear-gradient(top, #7d7e7d 0%, #0e0e0e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #7d7e7d 0%,#0e0e0e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #7d7e7d 0%,#0e0e0e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background-repeat: no-repeat;
+    height: 1200px;
+}
+
+p.front-page {
+    color: white;
+}
+
+img.navbar-brand {
+    padding: 5px;
+}
+
+a.navbar-brand {
+    padding: 15px;
+}
+
+.tt-query, /* UPDATE: newer versions use tt-input instead of tt-query */
+.tt-hint {
+    height: 30px;
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    color: black;
+}
+
+.tt-query { /* UPDATE: newer versions use tt-input instead of tt-query */
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+    color: #999;
+}
+
+.tt-menu { /* UPDATE: newer versions use tt-menu instead of tt-dropdown-menu */
+    margin-top: 12px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.application-search, .database-search, .ws-url-search, .ws-name-search, .ftp-name-search, .ftp-url-search,
+.shared-folder-path-search, .shared-folder-name-search, .dist-cache-search, .queue-name-search,
+.queue-path-search, .task-name-search, .task-url-search, .task-app-name-search,
+.sb-message-name-search, .sb-pub-app-name-search, .sb-sub-app-name-search,
+.solution-search, .assembly-search, .hint-path-search {
+    width: 600px;
+    color: black;
+    margin-top: 5px;
+}
+
+.tt-suggestion {
+    padding: 3px 20px;
+    font-size: 12px;
+    line-height: 24px;
+    color: black;
+}
+
+.tt-suggestion.tt-is-under-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
+    color: black;
+    background-color: #0097cf;
+
+}
+
+.tt-suggestion p {
+    margin: 0;
+}
+
+.grid-container {
+    background-color: black;
+    padding:20px;
+    margin: auto;
+}
+
+.grid-cell {
+    background-color: #262626;
+    margin: 10px;
+    height: 100px;
+    width: 160px;
+    display: flex;
+}
+
+.grid-cell-large {
+    background-color: #262626;
+    margin: 10px;
+    height: 180px;
+    width: 250px;
+    display: flex;
+}
+
+.grid-cell-query-header {
+    background-color: transparent;
+    margin: 10px;
+    width: 340px;
+    height: 100%;
+}
+
+.grid-cell-query-header > img {
+
+}
+
+.grid-cell-query-content {
+    background-color: #262626;
+    margin: 10px;
+    width: 700px;
+}
+
+.grid-cell:hover, .grid-cell-large:hover {
+    background-color: #404040;
+}
+
+img {
+    margin: auto;  /* Magic! */
+}
+
+.modal-dialog {
+    width: 90%;
+    padding: 5px;
+}
+
+.modal-content, .panel {
+    background-color: #404040;
+    
+    color: white;
+}
+
+.modal-header {
+    border-bottom: 1px solid #404040;
+}
+
+.modal-footer {
+    background-color: #404040;
+    border-top: 1px solid #404040;
+}
+
+.query {
+	padding: 10px
+}
+
+.query-container {
+	/*background-color: lightgray;*/
+	padding: 10px;
+	margin: 10px;
+}
+
+#queryRowDb, #queryRowWs, #queryRowFtp, #queryRowSharedFolder, #queryRowDistCache,
+#queryRowQueue, #queryRowTask, #queryRowApp, #queryRowSb, #queryRowAdvPhy,
+#queryRowSlnAssemblies, #queryRowRefsToAssembly, #queryRowRefCountsToAssembly,
+#queryRowAdvAss {
+    display: none
+}
+
+#whereAppPanel, #appDbQueryContainer, #appWsQueryContainer, #appFtpQueryContainer,
+#appSharedFolderQueryContainer, #appDistCacheQueryContainer, #appQueueQueryContainer,
+#taskQueryContainer, #appQueryContainer, #sbQueryContainer, #advPhyQueryContainer,
+#slnAssembliesQueryContainer, #refsToAssemblyQueryContainer, #refCountsToAssemblyQueryContainer,
+#advAssQueryContainer {
+    display: none
+}
+
+li.active a {
+    background-color: #6E6E6E !important;
+    color: white !important;
+}
+
+li a {
+    color: white;
+
+}
+
+pre {
+    background-color: #404040 !important;
+    color: white;
+    border: none;
+}
+
+.panel-default>.panel-heading {
+    background-color: #404040 !important;
+    color: white;
+    border: none;
+    padding: 0px 0px 0px 10px;
+    margin: 0px;
+}
+
+.panel-default {
+    border: 1px solid #757575 !important;
+    margin: 10px;
+}
+
+.query-panel-container {
+    display: block;
+}

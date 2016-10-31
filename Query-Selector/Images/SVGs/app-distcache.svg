@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg28543"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="app-appfabric.svg"
+   inkscape:export-filename="C:\Users\Jack\Pictures\Inkscape\Nodes\app-distcache.png"
+   inkscape:export-xdpi="46.875401"
+   inkscape:export-ydpi="46.875401">
+  <defs
+     id="defs28545" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="352.49824"
+     inkscape:cy="259.98301"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata28548">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="opacity:1;fill:#2dd1d1;fill-opacity:1;stroke:none;stroke-width:0.759;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4289-2"
+       cx="321.88528"
+       cy="723.43365"
+       rx="27.857141"
+       ry="26.428572"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <ellipse
+       style="opacity:1;fill:#e51723;fill-opacity:1;stroke:none;stroke-width:0.759;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4289-4-8"
+       cx="397.59955"
+       cy="758.43365"
+       rx="27.857141"
+       ry="26.428572"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#999999;fill-rule:evenodd;stroke:#929292;stroke-width:0.72100002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 365.95344,745.02464 349.1587,735.68458 Z"
+       id="path4862-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="295.09955"
+       y="765.14789"
+       id="text9719-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan9721-1"
+         x="295.09955"
+         y="765.14789"
+         style="font-size:10px;fill:#ffffff">Application</tspan><tspan
+         sodipodi:role="line"
+         x="295.09955"
+         y="777.64789"
+         style="font-size:10px;fill:#ffffff"
+         id="tspan19875" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="373.4523"
+       y="714.27808"
+       id="text9719-6-2"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="373.4523"
+         y="714.27808"
+         style="font-size:10px;fill:#ffffff"
+         id="tspan28524">Distributed</tspan><tspan
+         sodipodi:role="line"
+         x="373.4523"
+         y="726.77808"
+         style="font-size:10px;fill:#ffffff"
+         id="tspan3342">Cache</tspan></text>
+  </g>
+</svg>
